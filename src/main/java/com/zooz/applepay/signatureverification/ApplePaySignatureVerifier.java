@@ -103,7 +103,8 @@ public class ApplePaySignatureVerifier {
         try {
             ArrayList certCollection = (ArrayList) store.getMatches(signerInformation.getSID());
             Iterator certIt = certCollection.iterator();
-            X509CertificateHolder certHolder = (X509CertificateHolder) certIt.next();
+            X509CertificateHolder certHolder = (X509CertificateHolder) certIt.next(); 
+            //all the above make certHolder the first elment of the list
             X509Certificate cert = new JcaX509CertificateConverter().setProvider(BC).getCertificate(certHolder);
             signerInformation.verify(new JcaSimpleSignerInfoVerifierBuilder().setProvider(BC).build(cert));
         } catch (Exception ex) {
